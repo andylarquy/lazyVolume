@@ -1,6 +1,7 @@
 import sys
 import json
 from .OS.linux import Linux
+from .OS.windows import Windows
 
 system = None
     
@@ -12,7 +13,7 @@ def setCurrentSystem():
         print('\nRest server is set as running on linux.\n')
 
     elif getOpSysInfo() == 'win32':
-        # TODO - Codear clase windows
+        system = Windows()
         print('TODO - Rest server is running on windows.')
     
 def getOpSysInfo():
