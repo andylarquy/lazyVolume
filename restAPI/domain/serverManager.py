@@ -23,15 +23,20 @@ def volumeRequest(request):
     if request.method == 'GET':
         return getCurrentVolume()
     elif request.method == 'POST':
-        setNewVolume(request.body)
+        return setNewVolume(request.body)
 
 #PeticionPOST
 def setNewVolume(newVolume):
     global system
     
     setCurrentSystem()
-    system.setVolume(int(newVolume))
-    # TODO - Pasar la informacion en un JSON, no como raw
+    try:
+        system.setVolume(int(newVolume))
+        # TODO - Pasar la informacion en un JSON, no como raw
+        return '{"status":200}'
+    except:
+        # TODO - Devolver error detallado
+        return None
 
 #Peticion GET
 def getCurrentVolume():
