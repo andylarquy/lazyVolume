@@ -26,13 +26,12 @@ def volumeRequest(request):
         setNewVolume(request.body)
 
 #PeticionPOST
-def setNewVolume(JSONnewVolume):
+def setNewVolume(newVolume):
     global system
     
     setCurrentSystem()
-    # Parseo el JSON que me viene del POST
-    newVolume = json.loads(JSONnewVolume)
-    system.setVolume(newVolume['volume'])
+    system.setVolume(int(newVolume))
+    # TODO - Pasar la informacion en un JSON, no como raw
 
 #Peticion GET
 def getCurrentVolume():

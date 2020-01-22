@@ -1,0 +1,9 @@
+<h1 id="titulo">Lazy Volume</h1>
+
+<h2 id="volumen">Volumen: {{volumen}}</h2>
+<mat-progress-bar id="progress-bar" mode="determinate" value={{volumen}}></mat-progress-bar>
+
+<mat-slider id="slider" min="0" max="100" step="1" [(ngModel)]="volumen" (change)="onChangeSlider()"></mat-slider>
+
+<!-- Clave este meme -->
+<img class="img-meme" src="https://i.imgur.com/sVc8nR5.jpg" alt="Acá iba un meme">

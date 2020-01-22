@@ -12,6 +12,6 @@ class Linux:
 
     def setVolume(self, newVolume):
         setVolumeCommand = "amixer sset 'Master' "+str(newVolume)+"%"
-        result = subprocess.run(setVolumeCommand, shell=True)
+        subprocess.run(setVolumeCommand, shell=True)
 
         # TODO - Manejar Errores

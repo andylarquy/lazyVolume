@@ -1,7 +1,10 @@
-from ctypes import POINTER, cast
-from comtypes import CLSCTX_ALL
-from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
-import pythoncom
+try:
+    from ctypes import POINTER, cast
+    from comtypes import CLSCTX_ALL
+    from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
+    import pythoncom
+except:
+    pass
 
 g_volume = None
 

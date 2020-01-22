@@ -1,0 +1,24 @@
+#titulo{
+    text-align: center;
+}
+
+#volumen{    
+    text-align: center;
+    margin-top: 15%;
+}
+
+#progress-bar{
+    width: 75%;
+    margin: 10% auto;
+}
+
+#slider{
+    width: 85%;
+    margin-left: 10%;
+}
+
+.img-meme{
+    max-height: 40%;
+    display: block;
+    margin: 5% auto ;
+}

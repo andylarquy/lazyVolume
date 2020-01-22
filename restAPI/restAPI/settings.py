@@ -25,7 +25,7 @@ SECRET_KEY = '-j#2yfm$_9ivnzvv%^avae^%-18zg_199+7ts!4@7gtvw#=(=t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.0.6']
 
 
 # Application definition
@@ -37,11 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Añadido por conflictos
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # Añadido por conflictos
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     # Desactivado para evitar csrf-checks
     # 'django.middleware.csrf.CsrfViewMiddleware',
@@ -120,3 +124,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Añadido para evitar conflictos
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
