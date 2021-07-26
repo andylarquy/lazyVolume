@@ -1,6 +1,6 @@
 const { PythonShell } = require('python-shell')
 
-async function restApiIsRunning() {
+async function isRunning() {
   let pyshell = new PythonShell('src/python/isPortInUse.py')
 
   pyshell.on('message', function (message) {
@@ -44,15 +44,17 @@ const SHORT_DELAY_SCRIPT = 1000 //ms
 function debugScript() {
   startServer()
   sleep(LONG_DELAY_SCRIPT).then(async () => {
-  
-    restApiIsRunning()
+
+    isRunning()
     sleep(SHORT_DELAY_SCRIPT).then(async () => {
-  
+
       stopServer()
       sleep(SHORT_DELAY_SCRIPT).then(async () => {
-  
-        restApiIsRunning()
+
+        isRunning()
       })
     })
-  })  
+  })
 }
+
+export const APIRestService = { startServer, stopServer, isRunning }
