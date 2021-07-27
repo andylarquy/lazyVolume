@@ -1,18 +1,24 @@
 const { PythonShell } = require('python-shell')
 
 async function isRunning() {
-  let pyshell = new PythonShell('src/python/isPortInUse.py')
-
-  pyshell.on('message', function (message) {
-    console.log(message)
-    return message === 'True'
-  })
-
-  pyshell.end(function (err) {
+  const pyshell = new PythonShell('src/python/isPortInUse.py')
+  
+  pyshell.end((err) => {
     if (err) {
       throw err
     };
   })
+  
+  return new Promise((resolve, reject) => {
+    pyshell.on('message', (message) => {
+      try {
+        resolve(message === 'True')
+      } catch (err) {
+        reject(err)
+      }
+    })
+  })
+
 }
 
 let serverProcess
@@ -33,7 +39,7 @@ function startServer() {
 }
 
 function stopServer() {
-  serverProcess.childProcess.kill('SIGTERM')
+  serverProcess && serverProcess.childProcess.kill('SIGTERM')
 }
 
 const sleep = async (time) => await new Promise(r => setTimeout(r, time))
@@ -42,7 +48,7 @@ const LONG_DELAY_SCRIPT = 5000 //ms
 const SHORT_DELAY_SCRIPT = 1000 //ms
 
 function debugScript() {
-  startServer()
+  //startServer()
   sleep(LONG_DELAY_SCRIPT).then(async () => {
 
     isRunning()

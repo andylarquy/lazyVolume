@@ -20,13 +20,16 @@
     "eject": "react-scripts eject",
     "electron": "electron .",
     "dev": "yarn start && yarn electron",
-    "pyshell": "node src/pythonShell.service"
+    "pyshell": "node src/services/pythonShell.service"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules":{
+      "prefer-const": ["error"]
+    }
   },
   "browserslist": {
     "production": [
